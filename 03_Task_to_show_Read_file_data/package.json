@@ -1,10 +1,10 @@
 {
-  "name": "02_read_write",
+  "name": "03_task_to_show_read_file_data",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "Node app.js"
   },
   "keywords": [],
   "author": "",

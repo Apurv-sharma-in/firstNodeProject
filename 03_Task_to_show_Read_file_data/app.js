@@ -1,5 +1,6 @@
 const http = require("http");
 const fs = require("fs");
+const { disconnect } = require("process");
 const server = http.createServer((req, res)=>{
     const url = req.url;
     const method = req.method;
@@ -8,16 +9,21 @@ const server = http.createServer((req, res)=>{
         //form 
         
         res.setHeader('Content-type','text/html');
-        
-        res.end(
-            `
-            <form action="/message" method ="POST">
-            <label>Name:</label>
+        fs.readFile('value.txt',(err,data)=>{
+            let display = "";
+            display=data.toString();
+            res.end(
+                `
+                <h1>${data}</h1>
+                <form action="/message" method ="POST">
+                <label>Name:</label>
             <input type="text" name = "userName" ></input>
             <button type="submit">Add </button>
             </form>
             `
         )
+    })
+
     }else{
         if(req.url ==='/message'){
             res.setHeader('content-type','text/html');
@@ -43,15 +49,7 @@ const server = http.createServer((req, res)=>{
 
                 })
             })
-        }else{
-            if(req.url === '/html'){
-            fs.readFile('value.txt',(err,data)=>{
-                console.log(data);
-                res.end(`
-                    <h1>${data.toString()}</h1>
-                    `)
-            })
-        }
+       
         }
     }
 

@@ -5,13 +5,13 @@ const express = require('express');
 const app = express();
 app.use((req,res,next)=>{
     console.log("Output form middleware 1 ");
+    res.send(`
+        <h1>Server is up and running on port 3000! Ready to handle requests.</h1>
+        `)
     next();
 });
 app.use((req,res,next)=>{
     console.log("Output form middleware 2 ");
-    res.send(`
-        <h1>Hii this is Express</h1>
-        `)
 });
 
 

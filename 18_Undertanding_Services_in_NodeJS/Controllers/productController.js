@@ -1,5 +1,4 @@
 const productService = require('../Services/productService');
-
 const getAllProduct = (req,res)=>{
     const result = productService.getProducts();
     res.send(result);
